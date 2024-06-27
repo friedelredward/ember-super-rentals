@@ -16,5 +16,6 @@ npx ember generate acceptance-test super-rentals
 npx ember t -s
 
 npx ember generate component-test jumbo
-
 ´´´
+- `npx ember generate component rental`-> namespaced component(organizing)
+`npx ember generate component rental/image`: <Rental::Image>
