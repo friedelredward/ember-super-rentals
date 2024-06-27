@@ -17,12 +17,12 @@ module('Integration | Component | map', function (hooks) {
     />`);
 
     assert
-    .dom('.map img')
-    .exists()
-    .hasAttribute('alt', 'Map image at coordinates 37.7797,-122.4184')
-    .hasAttribute('src')
-    .hasAttribute('width', '150')
-    .hasAttribute('height', '120');
+      .dom('.map img')
+      .exists()
+      .hasAttribute('alt', 'Map image at coordinates 37.7797,-122.4184')
+      .hasAttribute('src')
+      .hasAttribute('width', '150')
+      .hasAttribute('height', '120');
 
     let { src } = find('.map img');
     let token = encodeURIComponent(ENV.MAPBOX_ACCESS_TOKEN);
@@ -48,7 +48,7 @@ module('Integration | Component | map', function (hooks) {
   });
 
   test('it updates the `src` attribute when the arguments change', async function (assert) {
-  /*  Using the special this.setProperties testing API, 
+    /*  Using the special this.setProperties testing API, 
   we can pass arbitrary values into our component.
 Note that the value of this here does not refer to the component instance.
  We are not directly accessing or modifying the component's internal states
