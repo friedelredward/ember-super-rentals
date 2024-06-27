@@ -13,4 +13,5 @@ Router.map(function () {
    * This allows us to keep the legacy URL, but use the new,
    * shorter name for the route, as well as the template filename. */
   this.route('contact', { path: '/getting-in-touch' });
+  this.route('rental', { path: '/rentals/:rental_id' }); //dynamic route
 });
