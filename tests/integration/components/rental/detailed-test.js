@@ -28,7 +28,7 @@ module('Integration | Component | rental/detailed', function (hooks) {
     });
   });
 
-   test('it renders a header with a share button', async function (assert) {
+  test('it renders a header with a share button', async function (assert) {
     await render(hbs`<Rental::Detailed @rental={{this.rental}} />`);
     assert.dom('.jumbo').exists();
     assert.dom('.jumbo h2').containsText('Grand Old Mansion');
