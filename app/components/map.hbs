@@ -1,0 +1,21 @@
+<div class="map">
+    {{!-- The ordering is important here! 
+    Ember applies the attributes in the order that they appear.
+     By assigning the default alt attribute first 
+     (before ...attributes is applied), 
+     we are explicitly providing the invoker
+      the option to provide a more tailored 
+      alt attribute according to their use case.
+Since the passed-in alt attribute (if any exists) 
+will appear after ours, it will override the value
+ we specified. On the other hand, 
+ it is important that we assign src, width, and height
+  after ...attributes, so that they don't get
+   accidentally overwritten by the invoker. --}}
+  <img
+    alt="Map image at coordinates {{@lat}},{{@lng}}"
+    ...attributes
+    src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/{{@lng}},{{@lat}},{{@zoom}}/{{@width}}x{{@height}}@2x?access_token={{this.token}}"
+    width={{@width}} height={{@height}}
+  >
+</div>
