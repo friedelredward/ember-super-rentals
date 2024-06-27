@@ -26,3 +26,5 @@ npx ember generate component-test jumbo
 - `ember generate component map --with-component-class` to generate with class
 - or `ember g component map -gc`
 
+> check this.args magic and remember getters are @tracked === **AUTO-TRACK**
+
