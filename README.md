@@ -14,4 +14,7 @@ https://guides.emberjs.com/release/tutorial/part-1/orientation/
 npx ember generate acceptance-test super-rentals
 
 npx ember t -s
+
+npx ember generate component-test jumbo
+
 ´´´
