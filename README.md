@@ -91,3 +91,11 @@ EmberData uses an adapter and serializer architecture.Adapters deal with how and
 - The provider component pattern
 - Using block parameters when invoking components
 - Yielding data to caller components
+--------------------------------------
+## Test cheatsheet
+
+| type        | use                              | setup Func                   | example                                           |
+|-------------|----------------------------------|------------------------------|---------------------------------------------------|
+| acceptance  | app wise. visit(/)...            | setupApplicationTest(hooks); | visiting /                                        |
+| integration | components testing in isolation. | setupRenderingTest (hooks);  | it renders all given rental properties by default |
+| unittest    | models                           | ``setupTest (hooks);``       | it has the right type                             |
