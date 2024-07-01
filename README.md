@@ -82,3 +82,6 @@ Loops and local variables in templates with {{#each}}
 -------------------------------------
 ## emberData, adapters, serializers, route's model handlers
 -  to create test for model `ember generate model-test rental`
+- we have to teach EmberData to fetch data from the correct location.
+EmberData uses an adapter and serializer architecture.Adapters deal with how and where and serializers are in charge of converting the data returned.default **JSON:API**
+- moar about models and relationships(https://guides.emberjs.com/release/models/)
