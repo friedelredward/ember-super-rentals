@@ -99,3 +99,23 @@ EmberData uses an adapter and serializer architecture.Adapters deal with how and
 | acceptance  | app wise. visit(/)...            | setupApplicationTest(hooks); | visiting /                                        |
 | integration | components testing in isolation. | setupRenderingTest (hooks);  | it renders all given rental properties by default |
 | unittest    | models                           | ``setupTest (hooks);``       | it has the right type                             |
+
+## Conditional content
+-  There are 2 styles of if: block and inline.
+
+```ember
+{{#if this.thingIsTrue}}
+  Content for the block form of "if"
+{{/if}}
+
+<div class={{if this.thingIsTrue "value-if-true" "value-if-false"}}>
+  This div used the inline "if" to calculate the class to use.
+</div>
+```
+- **block content** aka advanced `{{yield}}` :https://guides.emberjs.com/v5.8.0/components/block-content/
+---------------------------
+## helpers : template functions(like pipes almost) 
+- https://api.emberjs.com/ember/4.5.0/classes/Ember.Templates.helpers/
+
+We define global helper functions in the **app/helpers** folder. they will be available to use inside all templates.
+- templating + nice global helpers: https://guides.emberjs.com/v5.8.0/components/helper-functions/
