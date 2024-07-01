@@ -1,0 +1,23 @@
+<div class="rentals">
+  <label>
+    <span>Where would you like to stay?</span>
+    <Input @value={{this.query}} class="light" />
+    {{!-- <p>{{this.query}}</p> --}}
+  </label>
+
+{{!--
+we used the as |results| syntax when invoking <Rentals::Filter>.
+ Just like with the {{#each}} syntax,
+ this block parameter syntax allowed our block
+ to access the yielded data using the local variable results.
+ The yielded data came from {{yield this.results}},
+  where this.results is our filtered list of rental properties.
+  --}}
+  <ul class="results">
+    <Rentals::Filter @rentals={{@rentals}} @query={{this.query}} as |results|>
+      {{#each results as |rental|}}
+        <li><Rental @rental={{rental}} /></li>
+      {{/each}}
+    </Rentals::Filter>
+  </ul>
+</div>

@@ -1,0 +1,10 @@
+{{!-- CHECK THIS SINTAX
+is to use like
+
+ <Rentals::Filter @rentals={{@rentals}} @query={{this.query}} as |results|>
+      {{#each results as |rental|}}
+        <li><Rental @rental={{rental}} /></li>
+      {{/each}}
+    </Rentals::Filter> --}}
+    {{!-- works like component template @output  --}}
+{{yield this.results}}

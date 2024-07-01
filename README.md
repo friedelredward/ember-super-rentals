@@ -85,3 +85,9 @@ Loops and local variables in templates with {{#each}}
 - we have to teach EmberData to fetch data from the correct location.
 EmberData uses an adapter and serializer architecture.Adapters deal with how and where and serializers are in charge of converting the data returned.default **JSON:API**
 - moar about models and relationships(https://guides.emberjs.com/release/models/)
+
+------------------------------
+## Provider components pattern
+- The provider component pattern
+- Using block parameters when invoking components
+- Yielding data to caller components
