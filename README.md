@@ -79,5 +79,8 @@ Fetching remote data from the model hook
 Adapting server data
 Loops and local variables in templates with {{#each}}
 ```
+-------------------------------------
+## emberData, adapters, serializers, route's model handlers
+
 
 

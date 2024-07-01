@@ -29,17 +29,17 @@ module('Integration | Component | share-button', function (hooks) {
   });
 
   test('it renders', async function (assert) {
-      // Set any properties with this.set('myProperty', 'value');
-      // Handle any actions with this.set('myAction', function(val) { ... });
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.set('myAction', function(val) { ... });
     await render(hbs`<ShareButton>Tweet this!</ShareButton>`);
     assert
-    .dom('a')
-    .hasAttribute('target', '_blank')
-    .hasAttribute('rel', 'external nofollow noopener noreferrer')
-    .hasAttribute('href', /^https:\/\/twitter\.com\/intent\/tweet/)
-    .hasClass('share')
-    .hasClass('button')
-    .containsText('Tweet this!');
+      .dom('a')
+      .hasAttribute('target', '_blank')
+      .hasAttribute('rel', 'external nofollow noopener noreferrer')
+      .hasAttribute('href', /^https:\/\/twitter\.com\/intent\/tweet/)
+      .hasClass('share')
+      .hasClass('button')
+      .containsText('Tweet this!');
 
     assert.strictEqual(this.tweetParam('url'), MOCK_URL.href);
   });
