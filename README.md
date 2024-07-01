@@ -81,6 +81,4 @@ Loops and local variables in templates with {{#each}}
 ```
 -------------------------------------
 ## emberData, adapters, serializers, route's model handlers
-
-
-
+-  to create test for model `ember generate model-test rental`
