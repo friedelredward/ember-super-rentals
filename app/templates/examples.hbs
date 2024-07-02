@@ -21,3 +21,19 @@
   <button type="button" {{on "click" this.double}}>Double It</button>}
 '}}}</code></pre>
 <hr/>
+
+<h4>Component modifiers, audio example</h4>
+  <AudioPlayer
+  @srcURL="/media/t-rex-roar.mp3"/>
+<h4>Code example</h4>
+<pre><code>{{{'
+  <AudioPlayer
+  @srcURL="/media/t-rex-roar.mp3"
+  ></AudioPlayer>
+  //will render :
+    <audio {{play-when this.isPlaying}}
+  src="/media/t-rex-roar.mp3">
+  <track kind="captions"/>
+  </audio>
+'}}}</code></pre>
+<hr/>

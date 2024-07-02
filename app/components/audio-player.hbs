@@ -1,0 +1,12 @@
+{{!-- <audio src={{@srcURL}} {{play-when this.isPlaying}}>
+  <track kind="captions" />
+</audio> --}}
+<figure>
+  <audio controls
+    {{play-when this.isPlaying}}
+    src={{@srcURL}}>
+    <track kind="captions" />
+  </audio>
+</figure>
+<button type="button" {{on "click" this.play}}>Play</button>
+<button type="button" {{on "click" this.pause}}>Pause</button>

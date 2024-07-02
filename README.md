@@ -158,3 +158,26 @@ as |confirmValue|>
 </ButtonWithConfirmation>
 ```
 - passing up and down event handling :[user progfile example](https://guides.emberjs.com/v5.8.0/in-depth-topics/patterns-for-actions/#toc_calling-actions-up-multiple-component-layers)
+
+-------------------------
+## manipulating html properties (not attributes)
+- [Properties vs attributes handling](https://guides.emberjs.com/v5.8.0/components/template-lifecycle-dom-and-modifiers/#toc_manipulating-properties)
+- remember properties(live dom element)> contains attributes (html attributes like src href title etc).
+- Since srcObject is a property and **not** an HTML attribute, you can use the prop element modifier from ember-prop-modifier like this:
+``<audio {{prop srcObject=this.blob}} />``.If the value changes, Ember will automatically update the element's property for you.
+---------------------------------
+## Modifiers == directives!!! check audio example
+- addittional modiffiers can be declared![check](https://guides.emberjs.com/v5.8.0/components/template-lifecycle-dom-and-modifiers/#toc_abstracting-the-logic-into-a-custom-modifier)
+- very useful to interact with dom elements!!
+- Calling Methods On First Render **``did-insert``** :`` inputElement.focus();``---->
+```hbs
+<form>
+  <input {{did-insert this.focus}}>
+</form>
+```
+
+```js
+@action focus(element) {
+    element.focus();
+  }
+```
