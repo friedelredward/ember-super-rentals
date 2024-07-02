@@ -27,58 +27,6 @@ npx ember generate component-test jumbo
 - or `ember g component map -gc`
 
 > check this.args magic and remember getters are @tracked === **AUTO-TRACK**
-
-Completed ATM:
-```
-Installing Ember CLI
-Creating a new Ember app with Ember CLI
-Starting and stopping the development server
-Editing files and live reload
-Working with HTML, CSS and assets in an Ember app
-Defining routes
-Using route templates
-Customizing URLs
-Linking pages with the <LinkTo> component
-Passing arguments and attributes to components
-The purpose of automated testing
-Writing acceptance tests
-Using generators in Ember CLI
-Testing with the QUnit test framework
-Working with Ember's test helpers
-Practicing the testing workflow
-Extracting markup into components
-Invoking components
-Passing content to components
-Yielding content with the {{yield}} keyword
-Refactoring existing code
-Writing component tests
-Using the application template and {{outlet}}s
-Generating components
-Organizing code with namespaced components
-Forwarding HTML attributes with ...attributes
-Determining the appropriate amount of test coverage
-Adding behavior to components with classes
-Accessing instance states from templates
-Managing state with tracked properties
-Using conditionals syntaxes in templates
-Responding to user interaction with actions
-Invoking element modifiers
-Testing user interactions
-Managing application-level configurations
-Parameterizing components with arguments
-Accessing component arguments
-Interpolating values in templates
-Overriding HTML attributes in ...attributes
-Refactoring with getters and auto-track
-Getting JavaScript values into the test context
-Working with route files
-Returning local data from the model hook
-Accessing route models from templates
-Mocking server data with static JSON files
-Fetching remote data from the model hook
-Adapting server data
-Loops and local variables in templates with {{#each}}
-```
 -------------------------------------
 ## emberData, adapters, serializers, route's model handlers
 -  to create test for model `ember generate model-test rental`
@@ -169,3 +117,44 @@ Unlike traditional injection, which throws an error if the service doesn’t exi
 It lets you inject services even when they might not be available during component instantiation.
 This approach is especially useful for cases where services are conditionally registered.
 </details>
+
+--------------------------------
+## Component Must!s [here](https://guides.emberjs.com/v5.8.0/in-depth-topics/patterns-for-components/)
+- Argument Defaults 
+```js
+  get icon() {    return this.args.icon ?? 'icon-info';  }
+  get tooltipClass() {return this.args.tooltipClass + ' tooltip';  }
+```
+- Attribute Ordering 
+The positioning of ...attributes **matters** Attributes that come before ...attributes can be overridden, but attributes that come **after cannot**.
+class gets merged.
+- Contextual Components : ``{{component 'blog-post'}}`` is the same as using`` <BlogPost />``. Please check : https://guides.emberjs.com/v5.8.0/in-depth-topics/patterns-for-components/#toc_contextual-components
+- patterns for actions 
+[here](https://guides.emberjs.com/v5.8.0/in-depth-topics/patterns-for-actions/)
+ej: delete trigered from child component confirmation
+```js
+<ButtonWithConfirmation
+  @text="Click OK to delete your account."
+  @onConfirm={{this.deleteAccount}}
+/>//where action is triggered in ButtonWithConfirmation:
+/**
+ * In our ButtonWithConfirmation component we want to leave the confirmation modal open until we know that the operation has completed successfully. This is accomplished by expecting a promise to be returned from onConfirm.*/
+  @action async submitConfirm() {
+    if (this.args.onConfirm) {
+      await this.args.onConfirm();
+    }
+
+    this.isConfirming = false;
+  }
+```
+- arguments passing [here](https://guides.emberjs.com/v5.8.0/in-depth-topics/patterns-for-actions/#toc_passing-arguments)
+- invoke service from template:
+```hbs
+<ButtonWithConfirmation
+  @text="Click to send your message."
+  @onConfirm={{fn this.messaging.sendMessage "info"}}
+as |confirmValue|>
+  <Input @value={{confirmValue}} />
+</ButtonWithConfirmation>
+```
+- passing up and down event handling :[user progfile example](https://guides.emberjs.com/v5.8.0/in-depth-topics/patterns-for-actions/#toc_calling-actions-up-multiple-component-layers)
