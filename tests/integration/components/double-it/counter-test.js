@@ -9,18 +9,8 @@ module('Integration | Component | double-it/counter', function (hooks) {
   test('it renders', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
-
+//<DoubleIt::Counter @multiple={{this.multiple}} @updateMultiple={{this.updateMultiple}} />
     await render(hbs`<DoubleIt::Counter />`);
-
-    assert.dom().hasText('');
-
-    // Template block usage:
-    await render(hbs`
-      <DoubleIt::Counter>
-        template block text
-      </DoubleIt::Counter>
-    `);
-
-    assert.dom().hasText('template block text');
+    assert.dom().hasText('0 × = NaN +1 -1 Double It');
   });
 });

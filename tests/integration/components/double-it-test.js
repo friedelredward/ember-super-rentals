@@ -9,18 +9,14 @@ module('Integration | Component | double-it', function (hooks) {
   test('it renders', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
-
     await render(hbs`<DoubleIt />`);
-
-    assert.dom().hasText('');
-
-    // Template block usage:
-    await render(hbs`
-      <DoubleIt>
-        template block text
-      </DoubleIt>
-    `);
-
-    assert.dom().hasText('template block text');
+    assert.dom('p').exists({ count: 3 });
+    assert.dom('p').hasText('0');
+    // assert.dom('p').hasText('x');
+    // assert.dom('p').hasText('=');
+    assert.dom('button').exists({ count: 3 });
+    assert.dom('button').hasText('+1');
+    // assert.dom('button').hasText('-1');
+    // assert.dom('button').hasText('Double It');
   });
 });
