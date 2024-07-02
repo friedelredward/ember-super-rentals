@@ -1,0 +1,23 @@
+<Jumbo>
+  <h2>Examples</h2>
+  <p>    examples and in-depth explanations    </p>
+  {{!-- "contact" instead of "/getting-in-touch" --}}
+    <LinkTo @route="index" class="button">index</LinkTo>
+</Jumbo>
+<h4>Component State and Actions</h4>
+  <DoubleIt></DoubleIt>
+<h4>Code example</h4>
+<pre><code>{{{'  //where updateMultiple is an Action!!!
+  @action updateMultiple(newMultiple) {
+    this.multiple = newMultiple;
+  }
+  <DoubleIt::Counter @multiple={{this.multiple}} @updateMultiple={{this.updateMultiple}} />
+  //will render counter like :
+  <p>{{this.count}}</p>
+  <p>× {{@multiple}}</p>
+  <p>= {{this.total}}</p>
+  <button type="button" {{on "click" (fn this.change 1)}}>+1</button>
+  <button type="button" {{on "click" (fn this.change -1)}}>-1</button>
+  <button type="button" {{on "click" this.double}}>Double It</button>}
+'}}}</code></pre>
+<hr/>
