@@ -119,3 +119,53 @@ EmberData uses an adapter and serializer architecture.Adapters deal with how and
 
 We define global helper functions in the **app/helpers** folder. they will be available to use inside all templates.
 - templating + nice global helpers: https://guides.emberjs.com/v5.8.0/components/helper-functions/
+----------------------------------------
+
+## Service injection for conditionally registered services
+- (they might be not available when intatiating component for example)
+- getOwner/setOwner injecting app context so
+app service can be injected
+```js
+  @service('shopping-cart') cart;
+  constructor(context) {
+    setOwner(this, getOwner(context));
+  }
+  function addToCart() {
+    this.cart.add(this);
+  }
+```
+
+<details>
+  <summary>Service Injection</summary>
+  <p>
+    In summary, setOwner ensures that the Item class has access to the shopping cart service, even if the service is conditionally registered. 😊
+  </p>
+  
+  ```js
+
+  import { service } from '@ember/service';
+import { getOwner, setOwner } from '@ember/application';
+
+class Item {
+  @service('shopping-cart') cart;
+
+  constructor(context) {
+    setOwner(this, getOwner(context));
+  }
+
+  function addToCart() {
+    this.cart.add(this);
+  }
+}
+
+// On any framework object...
+let item = new Item(this);
+item.addToCart();
+  ```
+Sometimes a service may not exist (e.g., if it’s conditionally registered by an initializer).
+``setOwner`` associates the owner (usually **the application**) with the current instance.::**gains access to services and other container-managed objects**.
+In your example, this.cart (the shopping cart service) is injected into the Item class using setOwner.
+Unlike traditional injection, which throws an error if the service doesn’t exist, setOwner allows more flexibility.
+It lets you inject services even when they might not be available during component instantiation.
+This approach is especially useful for cases where services are conditionally registered.
+</details>
