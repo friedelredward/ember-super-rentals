@@ -1,5 +1,6 @@
 /**
  * @link https://guides.emberjs.com/v5.8.0/components/helper-functions/
+ * @link https://api.emberjs.com/ember/4.5.0/classes/Ember.Templates.helpers/
  * We define global helper functions in the app/helpers folder.
  *  Once defined, they will be available to use
  *  inside all templates in your app.
